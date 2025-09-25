@@ -32,8 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
-AlbumVerse/src/main/resources/public.pem
+/src/main/resources/public.pem
 
-AlbumVerse/src/main/resources/private.pem
+/src/main/resources/private.pem
 
-AlbumVerse/src/main/resources/keypair.pem
+/src/main/resources/keypair.pem
