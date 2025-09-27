@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthoritiesContainer;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.AlbumVerse.model.Account;
 import com.example.AlbumVerse.repository.AccountRepository;
+import com.example.AlbumVerse.utils.constants.Authority;
 
 @Service
 public class AccountService implements UserDetailsService {
@@ -31,27 +32,39 @@ public class AccountService implements UserDetailsService {
 
     public Account save(Account account){
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        
+        if(account.getAuthorities() == null || account.getAuthorities().isEmpty()) {
+            account.setAuthorities(Authority.USER.toString());
+        }
         return accountRepository.save(account);
     }
 
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
 
+    public Optional<Account> findByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
+    public Optional<Account> findById(Long id) {
+        return accountRepository.findById(id);
+    }
+
+    public void deleteById(Long id) {
+        accountRepository.deleteById(id);
+    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Account> accountOpt = accountRepository.findByEmail(email);
         if (accountOpt.isPresent()) {
             Account account = accountOpt.get();
             List<GrantedAuthority> authority=new ArrayList<>();
-            authority.add(new SimpleGrantedAuthority(account.getRole()));
+            authority.add(new SimpleGrantedAuthority(account.getAuthorities()));
             return new User(account.getEmail(), account.getPassword(), authority);
         }
         throw new UsernameNotFoundException("User not found");
     }
 
 
-    public List<Account> findAll() {
-        return accountRepository.findAll();
-    }
-   
+    
 
 }
