@@ -82,7 +82,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authz -> authz
+                .requestMatchers("/**").permitAll()
                 .requestMatchers("/auth/token", "/auth/users/add").permitAll()
+               
                 .requestMatchers("/auth/users").hasAuthority("SCOPE_ADMIN")
                 .requestMatchers("/auth/profile").authenticated()
                 .requestMatchers("/auth/profile/update-password").authenticated()
