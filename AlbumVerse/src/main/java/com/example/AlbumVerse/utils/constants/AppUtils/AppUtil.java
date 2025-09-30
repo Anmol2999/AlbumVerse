@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 
 public class AppUtil {
     public static final String get_photo_upload_path(String fileName,String folder_name, Long album_id) throws IOException {
-        String path="AlbumVerse\\src\\main\\resources\\static\\uploads\\" + album_id+"\\"+folder_name;
+        String path="src\\main\\resources\\static\\uploads\\" + album_id+"\\"+folder_name;
         Files.createDirectories(Paths.get(path));
        
         return new File(path).getAbsolutePath()+"\\"+fileName;
@@ -33,7 +33,7 @@ public class AppUtil {
     }
 
     public static Resource getFileResource(long album_id,String folder_name,String file_name)throws IOException{
-        String filePath ="AlbumVerse\\src\\main\\resources\\static\\uploads\\" + album_id+"\\"+folder_name+"\\"+file_name;
+        String filePath ="src\\main\\resources\\static\\uploads\\" + album_id+"\\"+folder_name+"\\"+file_name;
          
         File file = new File(filePath);
        if (file.exists()) {
