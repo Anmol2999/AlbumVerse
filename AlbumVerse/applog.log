@@ -203,3 +203,101 @@ Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieva
 	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:963)
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:827)
 	... 56 common frames omitted
+2025-10-02 14:16:59,480 [INFO] com.example.AlbumVerse.AlbumVerseApplication {restartedMain} Starting AlbumVerseApplication using Java 21.0.8 with PID 6020 (D:\Projects\AlbumVerse\AlbumVerse\target\classes started by anmol in d:\Projects\AlbumVerse\AlbumVerse)
+2025-10-02 14:16:59,480 [INFO] com.example.AlbumVerse.AlbumVerseApplication {restartedMain} No active profile set, falling back to 1 default profile: "default"
+2025-10-02 14:16:59,533 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor {restartedMain} Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-02 14:16:59,533 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor {restartedMain} For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-02 14:17:00,368 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate {restartedMain} Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-02 14:17:00,437 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate {restartedMain} Finished Spring Data repository scanning in 53 ms. Found 3 JPA repository interfaces.
+2025-10-02 14:17:01,002 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer {restartedMain} Tomcat initialized with port 8080 (http)
+2025-10-02 14:17:01,017 [INFO] org.apache.catalina.core.StandardService {restartedMain} Starting service [Tomcat]
+2025-10-02 14:17:01,017 [INFO] org.apache.catalina.core.StandardEngine {restartedMain} Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-02 14:17:01,067 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] {restartedMain} Initializing Spring embedded WebApplicationContext
+2025-10-02 14:17:01,067 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext {restartedMain} Root WebApplicationContext: initialization completed in 1534 ms
+2025-10-02 14:17:01,261 [INFO] org.hibernate.jpa.internal.util.LogHelper {restartedMain} HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-02 14:17:01,297 [INFO] org.hibernate.Version {restartedMain} HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-02 14:17:01,337 [INFO] org.hibernate.cache.internal.RegionFactoryInitiator {restartedMain} HHH000026: Second-level cache disabled
+2025-10-02 14:17:01,608 [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo {restartedMain} No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-02 14:17:01,634 [INFO] com.zaxxer.hikari.HikariDataSource {restartedMain} HikariPool-1 - Starting...
+2025-10-02 14:17:01,796 [INFO] com.zaxxer.hikari.pool.HikariPool {restartedMain} HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@242b3a3f
+2025-10-02 14:17:01,796 [INFO] com.zaxxer.hikari.HikariDataSource {restartedMain} HikariPool-1 - Start completed.
+2025-10-02 14:17:01,847 [WARN] org.hibernate.orm.deprecation {restartedMain} HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-02 14:17:01,849 [WARN] org.hibernate.orm.deprecation {restartedMain} HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-02 14:17:01,864 [INFO] org.hibernate.orm.connections.pooling {restartedMain} HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-02 14:17:02,531 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator {restartedMain} HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-02 14:17:02,614 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean {restartedMain} Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 14:17:03,412 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration {restartedMain} spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-02 14:17:03,629 [INFO] org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {restartedMain} Global AuthenticationManager configured with UserDetailsService bean with name accountService
+2025-10-02 14:17:03,770 [DEBUG] org.springframework.security.web.DefaultSecurityFilterChain {restartedMain} Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, BearerTokenAuthenticationFilter, AuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-10-02 14:17:04,063 [INFO] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer {restartedMain} LiveReload server is running on port 35729
+2025-10-02 14:17:04,101 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer {restartedMain} Tomcat started on port 8080 (http) with context path '/'
+2025-10-02 14:17:04,108 [INFO] com.example.AlbumVerse.AlbumVerseApplication {restartedMain} Started AlbumVerseApplication in 5.046 seconds (process running for 5.467)
+2025-10-02 14:17:10,434 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] {http-nio-8080-exec-1} Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-02 14:17:10,434 [INFO] org.springframework.web.servlet.DispatcherServlet {http-nio-8080-exec-1} Initializing Servlet 'dispatcherServlet'
+2025-10-02 14:17:10,435 [INFO] org.springframework.web.servlet.DispatcherServlet {http-nio-8080-exec-1} Completed initialization in 1 ms
+2025-10-02 14:17:10,447 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Securing GET /
+2025-10-02 14:17:10,455 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-1} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:10,459 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Secured GET /
+2025-10-02 14:17:11,074 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Securing GET /favicon.ico
+2025-10-02 14:17:11,076 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-2} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:11,076 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Secured GET /favicon.ico
+2025-10-02 14:17:11,076 [WARN] org.springframework.web.servlet.PageNotFound {http-nio-8080-exec-2} No mapping for GET /favicon.ico
+2025-10-02 14:17:11,082 [WARN] org.springframework.web.servlet.PageNotFound {http-nio-8080-exec-2} No endpoint GET /favicon.ico.
+2025-10-02 14:17:11,090 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Securing GET /error
+2025-10-02 14:17:11,091 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Secured GET /error
+2025-10-02 14:17:11,134 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-2} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,929 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-3} Securing GET /swagger-ui.html
+2025-10-02 14:17:18,929 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-3} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,930 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-3} Secured GET /swagger-ui.html
+2025-10-02 14:17:18,965 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Securing GET /swagger-ui/index.html
+2025-10-02 14:17:18,966 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-4} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,966 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Secured GET /swagger-ui/index.html
+2025-10-02 14:17:18,976 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Securing GET /swagger-ui/swagger-ui.css
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-7} Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-6} Securing GET /swagger-ui/index.css
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-7} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-5} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-6} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Secured GET /swagger-ui/swagger-ui.css
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-6} Secured GET /swagger-ui/index.css
+2025-10-02 14:17:18,977 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-7} Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-10-02 14:17:18,987 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-10-02 14:17:18,987 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-8} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,988 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-10-02 14:17:18,989 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Securing GET /swagger-ui/swagger-initializer.js
+2025-10-02 14:17:18,989 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-9} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:18,991 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Secured GET /swagger-ui/swagger-initializer.js
+2025-10-02 14:17:19,112 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Securing GET /v3/api-docs/swagger-config
+2025-10-02 14:17:19,112 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-10} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:19,112 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Secured GET /v3/api-docs/swagger-config
+2025-10-02 14:17:19,126 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Securing GET /v3/api-docs
+2025-10-02 14:17:19,126 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-1} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:19,126 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Secured GET /v3/api-docs
+2025-10-02 14:17:19,436 [INFO] org.springdoc.api.AbstractOpenApiResource {http-nio-8080-exec-1} Init duration for springdoc-openapi is: 299 ms
+2025-10-02 14:17:22,651 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Securing GET /v3/api-docs
+2025-10-02 14:17:22,652 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-2} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:17:22,652 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Secured GET /v3/api-docs
+2025-10-02 14:18:02,018 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-3} Securing GET /v3/api-docs
+2025-10-02 14:18:02,018 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-3} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:18:02,019 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-3} Secured GET /v3/api-docs
+2025-10-02 14:18:02,130 [INFO] org.springdoc.api.AbstractOpenApiResource {http-nio-8080-exec-3} Init duration for springdoc-openapi is: 110 ms
+2025-10-02 14:19:33,118 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Securing GET /
+2025-10-02 14:19:33,119 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-10} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:19:33,119 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Secured GET /
+2025-10-02 14:21:15,860 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-3} Securing GET /albums/albums
+2025-10-02 14:21:57,565 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Securing GET /
+2025-10-02 14:21:57,565 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-4} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:21:57,567 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Secured GET /
+2025-10-02 14:22:19,820 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Securing GET /
+2025-10-02 14:22:19,821 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-5} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:22:19,821 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Secured GET /
+2025-10-02 14:22:21,942 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Securing GET /
+2025-10-02 14:22:21,942 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-8} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 14:22:21,945 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Secured GET /
