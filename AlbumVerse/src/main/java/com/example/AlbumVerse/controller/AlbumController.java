@@ -42,7 +42,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
 import org.springframework.security.core.Authentication;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,14 +52,17 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/albums")
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
 @Tag(name = "Album Controller", description = "APIs for managing albums and photos")
 @Slf4j
 public class AlbumController {
@@ -221,7 +223,7 @@ public class AlbumController {
     @Operation(summary = "Add photos to an album", description = "Uploads and adds photos to a specified album")
     @ApiResponse(responseCode = "400", description = "Please check the payload or token")
     @SecurityRequirement(name = "bearerAuth")
-    public ResponseEntity<List<HashMap<String, List<String>>>> addPhotos(@PathVariable("album_id") Long albumId,
+    public ResponseEntity<List<HashMap<String, List<?>>>> addPhotos(@PathVariable("album_id") Long albumId,
             @RequestPart(required = true) MultipartFile[] files, Authentication authentication) {
         String email = authentication.getName();
         Optional<Account> accountOptional = accountService.findByEmail(email);
@@ -237,13 +239,12 @@ public class AlbumController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 
         }
-        List<String> fileNamesWithSuccess = new ArrayList<>();
+        List<PhotoViewDTO> fileNamesWithSuccess = new ArrayList<>();
         List<String> fileNamesWithError = new ArrayList<>();
         Arrays.asList(files).stream().forEach(file -> {
             String contentType = file.getContentType();
             if (contentType.equals("image/jpeg") || contentType.equals("image/png")
                     || contentType.equals("image/jpg")) {
-                fileNamesWithSuccess.add(file.getOriginalFilename());
 
                 int length = 10;
                 boolean useLetters = true;
@@ -268,6 +269,12 @@ public class AlbumController {
                     photo.setAlbum(album);
                     photoService.save(photo);
 
+                    PhotoViewDTO photoViewDTO = new PhotoViewDTO();
+                    photoViewDTO.setId(photo.getId());
+                    photoViewDTO.setName(photo.getName());
+                    photoViewDTO.setDescription(photo.getDescription());
+                    fileNamesWithSuccess.add(photoViewDTO);
+
                     BufferedImage thumImg = AppUtil.getThumbnail(file, THUMBNAIL_WIDTH);
                     File thumbnail_location = new File(
                             AppUtil.get_photo_upload_path(final_photo_name, THUMBNAIL_FOLDER_NAME, albumId));
@@ -281,10 +288,11 @@ public class AlbumController {
             }
 
         });
-        HashMap<String, List<String>> response = new HashMap<>();
+        HashMap<String, List<?>> response = new HashMap<>();
         response.put("success", fileNamesWithSuccess);
         response.put("error", fileNamesWithError);
-        List<HashMap<String, List<String>>> responseList = new ArrayList<>();
+
+        List<HashMap<String, List<?>>> responseList = new ArrayList<>();
         responseList.add(response);
         return ResponseEntity.ok(responseList);
     }
@@ -317,11 +325,15 @@ public class AlbumController {
             Optional<Photo> photoOptional = photoService.findById(photoId);
             if (photoOptional.isPresent()) {
                 Photo photo = photoOptional.get();
+                if (photo.getAlbum().getId() != albumId) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+
+                }
                 photo.setName(photoviewDTO.getName());
                 photo.setDescription(photoviewDTO.getDescription());
                 photo = photoService.save(photo);
                 PhotoViewDTO updatedPhotoDTO = new PhotoViewDTO();
-                
+
                 updatedPhotoDTO.setName(photo.getName());
                 updatedPhotoDTO.setDescription(photo.getDescription());
 
@@ -371,6 +383,10 @@ public class AlbumController {
         Optional<Photo> optionalPhoto = photoService.findById(photoId);
         if (optionalPhoto.isPresent()) {
             Photo photo = optionalPhoto.get();
+            if (photo.getAlbum().getId() != albumId) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+
+            }
             Resource resource = null;
             try {
                 resource = AppUtil.getFileResource(albumId, folderName, photo.getFileName());
@@ -388,6 +404,97 @@ public class AlbumController {
                     .header(HttpHeaders.CONTENT_DISPOSITION, headerValue)
                     .body(resource);
         } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+    }
+
+    @DeleteMapping("/{album_id}/photos/{photo_id}/delete_photo")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiResponse(responseCode = "200", description = "Photo deleted successfully")
+    @ApiResponse(responseCode = "400", description = "Invalid photo data")
+    @Operation(summary = "Delete an existing photo")
+    @SecurityRequirement(name = "bearerAuth")
+    public ResponseEntity<String> delete_photo(@PathVariable("album_id") Long albumId,
+            @PathVariable("photo_id") Long photoId, Authentication authentication) {
+
+        try {
+            String email = authentication.getName();
+            Optional<Account> accountOptional = accountService.findByEmail(email);
+            Account account = accountOptional.get();
+
+            Optional<Album> albumOptional = albumService.findById(albumId);
+            Album album = new Album();
+            if (albumOptional.isPresent()) {
+                album = albumOptional.get();
+                if (account.getId() != album.getAccount().getId()) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                            .body("You do not have permission to delete this photo.");
+
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Album not found.");
+            }
+
+            Optional<Photo> photoOptional = photoService.findById(photoId);
+            if (photoOptional.isPresent()) {
+                Photo photo = photoOptional.get();
+                if (photo.getAlbum().getId() != albumId) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                            .body("You do not have permission to delete this photo.");
+
+                }
+                AppUtil.deleteFileIfExists(albumId, PHOTOS_FOLDER_NAME, photo.getFileName());
+                AppUtil.deleteFileIfExists(albumId, THUMBNAIL_FOLDER_NAME, photo.getFileName());
+                photoService.delete(photo);
+                return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+            }
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+    }
+
+    @DeleteMapping("/{album_id}/delete_album")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiResponse(responseCode = "200", description = "Album deleted successfully")
+    @ApiResponse(responseCode = "400", description = "Invalid album data")
+    @Operation(summary = "Delete an existing album")
+    @SecurityRequirement(name = "bearerAuth")
+    public ResponseEntity<String> delete_album(@PathVariable("album_id") Long albumId,
+            Authentication authentication) {
+
+        try {
+            String email = authentication.getName();
+            Optional<Account> accountOptional = accountService.findByEmail(email);
+            Account account = accountOptional.get();
+
+            Optional<Album> albumOptional = albumService.findById(albumId);
+            Album album = new Album();
+            if (albumOptional.isPresent()) {
+                album = albumOptional.get();
+                if (account.getId() != album.getAccount().getId()) {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                            .body(null);
+
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            for (Photo photo : photoService.findByAlbumId(albumId)) {
+                AppUtil.deleteFileIfExists(albumId, PHOTOS_FOLDER_NAME, photo.getFileName());
+                AppUtil.deleteFileIfExists(albumId, THUMBNAIL_FOLDER_NAME, photo.getFileName());
+                photoService.delete(photo);
+            }
+
+            albumService.delete(album);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(null);
+
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 

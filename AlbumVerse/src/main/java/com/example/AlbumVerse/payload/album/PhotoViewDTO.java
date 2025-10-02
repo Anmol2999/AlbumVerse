@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PhotoViewDTO {
-   
+   private Long id;
     private String name;
     private String description;
 

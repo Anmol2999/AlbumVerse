@@ -26,4 +26,8 @@ public class AlbumService {
     public Optional<Album> findById(Long id) {
         return albumRepository.findById(id);
     }
+
+    public void delete(Album album) {
+        albumRepository.delete(album);
+    }
 }

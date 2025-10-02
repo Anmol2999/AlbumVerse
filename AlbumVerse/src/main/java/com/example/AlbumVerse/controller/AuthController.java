@@ -28,6 +28,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,7 @@ import org.springframework.http.ResponseEntity;
 @RestController
 // Request mapping is the path that the controller will listen to
 @RequestMapping("/auth")
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
 @Tag(name = "Authentication", description = "Endpoints for user authentication and token generation")
 @Slf4j
 public class AuthController {

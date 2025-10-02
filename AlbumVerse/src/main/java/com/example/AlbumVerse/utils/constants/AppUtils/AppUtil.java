@@ -43,4 +43,14 @@ public class AppUtil {
            return null;
        }
     }
+
+    public static void deleteFileIfExists(Long albumId, String FolderName, String fileName) {
+        String filePath = "src\\main\\resources\\static\\uploads\\" + albumId + "\\" + FolderName + "\\" + fileName;
+        try {
+            Files.deleteIfExists(Paths.get(filePath));
+        } catch (Exception e) {
+            
+        }
+        
+    }
 }
