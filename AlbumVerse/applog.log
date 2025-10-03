@@ -301,3 +301,40 @@ Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieva
 2025-10-02 14:22:21,942 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Securing GET /
 2025-10-02 14:22:21,942 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-8} Set SecurityContextHolder to anonymous SecurityContext
 2025-10-02 14:22:21,945 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Secured GET /
+2025-10-02 17:42:05,105 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Securing GET /
+2025-10-02 17:42:05,109 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-1} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 17:42:05,110 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-1} Secured GET /
+2025-10-02 17:42:45,433 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Securing GET /
+2025-10-02 17:42:45,434 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-2} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 17:42:45,434 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Secured GET /
+2025-10-02 18:02:50,798 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Securing GET /
+2025-10-02 18:02:50,798 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-4} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:02:50,799 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-4} Secured GET /
+2025-10-02 18:21:00,759 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Securing GET /
+2025-10-02 18:21:00,759 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-5} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:21:00,760 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Secured GET /
+2025-10-02 18:51:56,496 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Securing GET /
+2025-10-02 18:51:56,497 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-9} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:51:56,497 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Secured GET /
+2025-10-02 18:53:09,963 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Securing GET /
+2025-10-02 18:53:09,963 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-10} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:53:09,964 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-10} Secured GET /
+2025-10-02 18:53:25,317 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Securing POST /auth/token
+2025-10-02 18:53:25,317 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-2} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:53:25,317 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-2} Secured POST /auth/token
+2025-10-02 18:53:25,729 [DEBUG] org.springframework.security.authentication.dao.DaoAuthenticationProvider {http-nio-8080-exec-2} Authenticated user
+2025-10-02 18:56:26,650 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-6} Securing OPTIONS /auth/token
+2025-10-02 18:56:26,651 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-6} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:56:26,651 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-6} Secured OPTIONS /auth/token
+2025-10-02 18:56:26,669 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Securing POST /auth/token
+2025-10-02 18:56:26,669 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-5} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:56:26,669 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-5} Secured POST /auth/token
+2025-10-02 18:56:26,733 [DEBUG] org.springframework.security.authentication.dao.DaoAuthenticationProvider {http-nio-8080-exec-5} Authenticated user
+2025-10-02 18:57:11,797 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Securing POST /auth/token
+2025-10-02 18:57:11,797 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-8} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:57:11,797 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-8} Secured POST /auth/token
+2025-10-02 18:57:11,863 [DEBUG] org.springframework.security.authentication.dao.DaoAuthenticationProvider {http-nio-8080-exec-8} Authenticated user
+2025-10-02 18:57:34,121 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Securing POST /auth/token
+2025-10-02 18:57:34,122 [DEBUG] org.springframework.security.web.authentication.AnonymousAuthenticationFilter {http-nio-8080-exec-9} Set SecurityContextHolder to anonymous SecurityContext
+2025-10-02 18:57:34,122 [DEBUG] org.springframework.security.web.FilterChainProxy {http-nio-8080-exec-9} Secured POST /auth/token
+2025-10-02 18:57:34,197 [DEBUG] org.springframework.security.authentication.dao.DaoAuthenticationProvider {http-nio-8080-exec-9} Authenticated user

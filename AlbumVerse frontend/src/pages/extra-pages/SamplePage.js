@@ -1,16 +1,11 @@
-// material-ui
-import { Typography } from '@mui/material';
-import fetchGetData from 'client/client';
 
-// project import
+import { Typography } from '@mui/material';
+
+
+
 import MainCard from 'components/MainCard';
 
-// ==============================|| SAMPLE PAGE ||============================== //
 
-const apiUrl = 'http://localhost:8080';
-fetchGetData(apiUrl)
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error('Error fetching data:', error));
 
 const SamplePage = () => (
   <MainCard title="Sample Card">
