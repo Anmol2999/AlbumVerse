@@ -7,6 +7,7 @@ import MinimalLayout from 'layout/MinimalLayout';
 // render - login
 const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
 const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));
+const AuthLogout = Loadable(lazy(() => import('pages/authentication/Logout')));
 
 // ==============================|| AUTH ROUTING ||============================== //
 
@@ -21,6 +22,10 @@ const LoginRoutes = {
     {
       path: 'register',
       element: <AuthRegister />
+    },
+    {
+      path: 'logout',
+      element: <AuthLogout />
     }
   ]
 };
