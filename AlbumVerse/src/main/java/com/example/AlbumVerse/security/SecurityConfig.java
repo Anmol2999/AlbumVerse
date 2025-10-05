@@ -1,11 +1,14 @@
 package com.example.AlbumVerse.security;
 
+import java.util.List;
+
 // import java.beans.Customizer;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
@@ -21,6 +24,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 
 import org.springframework.security.web.SecurityFilterChain;
+
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -81,18 +85,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authz -> authz
-                .requestMatchers("/**").permitAll()
-                .requestMatchers("/auth/token", "/auth/users/add").permitAll()
-               
-                .requestMatchers("/auth/users").hasAuthority("SCOPE_ADMIN")
-                .requestMatchers("/auth/profile").authenticated()
-                .requestMatchers("/auth/profile/update-password").authenticated()
-                .requestMatchers("/auth/profile/{user_id}/update-authorities").hasAuthority("SCOPE_ADMIN")
-                .requestMatchers("/auth/profile/delete").authenticated()
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers("/test").authenticated()
-                .anyRequest().authenticated())
+        http
+
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/auth/token", "/auth/users/add").permitAll()
+
+                        .requestMatchers("/auth/users").hasAuthority("SCOPE_ADMIN")
+                        .requestMatchers("/auth/profile").authenticated()
+                        .requestMatchers("/auth/profile/update-password").authenticated()
+                        .requestMatchers("/auth/profile/{user_id}/update-authorities").hasAuthority("SCOPE_ADMIN")
+                        .requestMatchers("/auth/profile/delete").authenticated()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/test").authenticated()
+                        .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {
                 }))
                 .sessionManagement(session -> session.sessionCreationPolicy(
@@ -104,4 +110,5 @@ public class SecurityConfig {
         return http.build();
 
     }
+
 }

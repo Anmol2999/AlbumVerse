@@ -62,7 +62,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 
 @RestController
 @RequestMapping("/albums")
-@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
+@CrossOrigin(origins="http://localhost:3000", maxAge=3600,allowedHeaders="*")
 @Tag(name = "Album Controller", description = "APIs for managing albums and photos")
 @Slf4j
 public class AlbumController {
@@ -145,7 +145,7 @@ public class AlbumController {
 
             List<PhotoDTO> photos = new ArrayList<>();
             for (Photo photo : photoService.findByAlbumId(album.getId())) {
-                String link = "/" + album.getId() + "/photos/" + photo.getId() + "/download_photo";
+                String link = "/albums/" + album.getId() + "/photos/" + photo.getId() + "/download_photo";
                 photos.add(new PhotoDTO(photo.getId(), photo.getName(), photo.getDescription(), photo.getFileName(),
                         link));
 
@@ -181,7 +181,7 @@ public class AlbumController {
 
         List<PhotoDTO> photos = new ArrayList<>();
         for (Photo photo : photoService.findByAlbumId(album.getId())) {
-            String link = "/" + album.getId() + "/photos/" + photo.getId() + "/download_photo";
+            String link = "/albums/" + album.getId() + "/photos/" + photo.getId() + "/download_photo";
             photos.add(new PhotoDTO(photo.getId(), photo.getName(), photo.getDescription(), photo.getFileName(), link));
 
         }
@@ -348,6 +348,7 @@ public class AlbumController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
     @GetMapping("/{album_id}/photos/{photo_id}/download_photo")
     @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<?> downloadPhoto(@PathVariable("album_id") Long albumId,
@@ -402,6 +403,7 @@ public class AlbumController {
 
             return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
                     .header(HttpHeaders.CONTENT_DISPOSITION, headerValue)
+                     .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Content-Disposition, Content-Type")
                     .body(resource);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
