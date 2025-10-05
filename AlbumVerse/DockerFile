@@ -9,16 +9,16 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 
-# Copy the source code
+# Copy source code
 COPY src ./src
 
 # Make Maven wrapper executable
 RUN chmod +x mvnw
 
-# Build the application
+# Build the application (skip tests for faster build)
 RUN ./mvnw clean package -DskipTests
 
-# Copy the built jar (target folder)
+# Copy the built jar
 COPY target/*.jar app.jar
 
 # Expose default Spring Boot port
