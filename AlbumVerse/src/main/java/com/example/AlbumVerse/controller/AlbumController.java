@@ -62,7 +62,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 
 @RestController
 @RequestMapping("/albums")
-@CrossOrigin(origins="http://localhost:3000", maxAge=3600,allowedHeaders="*")
+// @CrossOrigin(origins="http://localhost:3000", maxAge=3600,allowedHeaders="*")
+@CrossOrigin(origins="https://albumverse.netlify.app", maxAge=3600,allowedHeaders="*")
 @Tag(name = "Album Controller", description = "APIs for managing albums and photos")
 @Slf4j
 public class AlbumController {

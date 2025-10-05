@@ -48,7 +48,8 @@ import org.springframework.http.ResponseEntity;
 @RestController
 // Request mapping is the path that the controller will listen to
 @RequestMapping("/auth")
-@CrossOrigin(origins="http://localhost:3000", maxAge=3600)
+// @CrossOrigin(origins="http://localhost:3000", maxAge=3600)
+@CrossOrigin(origins="https://albumverse.netlify.app", maxAge=3600,allowedHeaders="*")
 @Tag(name = "Authentication", description = "Endpoints for user authentication and token generation")
 @Slf4j
 public class AuthController {
