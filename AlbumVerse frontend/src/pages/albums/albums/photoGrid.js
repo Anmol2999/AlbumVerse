@@ -93,7 +93,8 @@ const PhotoGrid = () => {
 
       Promise.all(
         photoList.map(async (photo) => {
-          const imgResponse = await fetchGetDataWithAuthArrayBuffer(photo.downloadLink);
+          const thumbnailLink = photo.downloadLink.replace('/download_photo', '/download_thumbnail');
+          const imgResponse = await fetchGetDataWithAuthArrayBuffer(thumbnailLink);
           const buffer = Buffer.from(imgResponse.data, 'binary').toString('base64');
           const key = `album_${album_id}_photo_${photo.id}`;
           return {
